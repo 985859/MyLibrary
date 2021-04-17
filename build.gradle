@@ -1,6 +1,9 @@
-plugins {
-    id 'com.android.library'
-}
+apply plugin: 'com.android.library'
+// 1. 【必加】 启用 android-maven 插件
+apply plugin: 'com.github.dcendents.android-maven'
+// 2. 【必加】 关联Github地址, 格式为 com.github.(用户名)
+group = 'com.github.985859'
+
 
 android {
     compileSdkVersion 30
@@ -9,8 +12,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 10001
-        versionName "1.0.1"
+        versionCode 10002
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,6 +37,9 @@ dependencies {
 
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.android.material:material:1.2.1'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+
 
     //https://github.com/CymChad/BaseRecyclerViewAdapterHelper/blob/master/readme/0-BaseRecyclerViewAdapterHelper.md
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'

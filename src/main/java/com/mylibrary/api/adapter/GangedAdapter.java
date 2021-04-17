@@ -15,7 +15,7 @@ public class GangedAdapter extends BaseQuickAdapter<IGangedData, BaseViewHolder>
     int selectTextColor;
     int textColor;
     int textSize = 14;
-    int selcetPosition = -1;
+    int selectPosition = -1;
 
     public void setSelectTextColor(int selectTextColor) {
         this.selectTextColor = selectTextColor;
@@ -25,10 +25,10 @@ public class GangedAdapter extends BaseQuickAdapter<IGangedData, BaseViewHolder>
         this.textColor = textColor;
     }
 
-    public void setSelectPosition(int selcetPosition) {
-        int i = this.selcetPosition;
-        this.selcetPosition = selcetPosition;
-        notifyItemChanged(selcetPosition);
+    public void setSelectPosition(int selectPosition) {
+        int i = this.selectPosition;
+        this.selectPosition = selectPosition;
+        notifyItemChanged(selectPosition);
         notifyItemChanged(i);
 
 
@@ -51,7 +51,7 @@ public class GangedAdapter extends BaseQuickAdapter<IGangedData, BaseViewHolder>
         textView.setTextSize(textSize);
         textView.setTextColor(textColor);
         textT.setTextColor(selectTextColor);
-        if (selcetPosition == helper.getAdapterPosition()) {
+        if (selectPosition == helper.getAdapterPosition()) {
             textView.setTextColor(selectTextColor);
             helper.setVisible(R.id.itmGranged_T, true);
         } else {

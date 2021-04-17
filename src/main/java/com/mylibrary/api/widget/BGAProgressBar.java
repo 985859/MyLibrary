@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import com.mylibrary.api.R;
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
  * 创建时间:16/10/7 上午10:39
  * 描述:
  */

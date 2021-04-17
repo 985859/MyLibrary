@@ -2,6 +2,7 @@ package com.mylibrary.api.utils;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
@@ -196,5 +197,15 @@ public class SpannableUtil {
         return imageSpan;
     }
 
+    public static SpannableStringBuilder setMustTitle(String title) {
+        if (StringUtil.isEmpty(title)) {
+            title = "";
+        }
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+        builder.append(title);
+        builder.append(" *");
+        builder.setSpan(new ForegroundColorSpan(Color.parseColor("#fe2552")), builder.length() - 1, builder.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        return builder;
 
+    }
 }

@@ -2,13 +2,7 @@
 <resources>
 
 
-    <string name="srl_footer_failed">Load Failed</string>
-    <string name="srl_footer_finish">Load Success</string>
-    <string name="srl_footer_loading">Loading…</string>
-    <string name="srl_footer_nothing">No More Data</string>
-    <string name="srl_footer_pulling">Pull Up To Load More</string>
-    <string name="srl_footer_refreshing">Wait For Refreshing…</string>
-    <string name="srl_footer_release">Release To Load More</string>
+
 
 
     <!-- 边线宽度-->
@@ -60,30 +54,9 @@
         <enum name="RING" value="2" />
     </attr>
 
-    <declare-styleable name="FooterView">
-        <attr name="srlClassicsSpinnerStyle" />
-        <attr name="srlPrimaryColor" />
-        <attr name="srlAccentColor" />
-        <attr name="srlFinishDuration" />
-        <attr name="srlTextSizeTitle" />
-        <attr name="srlDrawableArrow" />
-        <attr name="srlDrawableProgress" />
-        <attr name="srlDrawableMarginRight" />
-        <attr name="srlDrawableSize" />
-        <attr name="srlDrawableArrowSize" />
-        <attr name="srlDrawableProgressSize" />
 
-        <attr name="srlTextPulling" />
-        <attr name="srlTextRelease" />
-        <attr name="srlTextLoading" />
-        <attr name="srlTextRefreshing" />
-        <attr name="srlTextFinish" />
-        <attr name="srlTextFailed" />
-        <attr name="srlTextNothing" />
 
-    </declare-styleable>
 
-    <!-- 倒角ImageView -->
     <declare-styleable name="PicassoImageView">
         <attr name="attr_cornersRaius" />
         <attr name="attr_topLeftRadius" />
@@ -599,4 +572,44 @@
         <!-- 只有maxIndex=1 有效-->
         <attr name="flow_isCancel" format="boolean" />
     </declare-styleable>
+
+
+    <declare-styleable name="EditView">
+        <!-- 0 不必填 1 必填-->
+        <attr name="edit_Must" format="integer" />
+        <attr name="edit_Title" format="string" />
+        <attr name="edit_TitleSize" format="dimension" />
+        <attr name="edit_TitleColor" format="color" />
+        <attr name="edit_Hint" format="string" />
+        <attr name="edit_Text" format="string" />
+        <attr name="edit_TextMarginTop" format="dimension" />
+        <attr name="edit_TextSize" format="dimension" />
+        <attr name="edit_TextColor" format="color" />
+        <attr name="edit_Edit" format="boolean" />
+        <attr name="edit_Color" format="color" />
+        <attr name="edit_Radius" format="dimension" />
+        <attr name="edit_Padding" format="dimension" />
+        <attr name="edit_ShowNumber" format="boolean" />
+        <attr name="edit_NumberColor" format="color" />
+        <attr name="edit_NumberSize" format="dimension" />
+        <attr name="edit_SingleLine" format="boolean" />
+        <attr name="android:inputType" />
+        <attr name="android:maxLength" />
+    </declare-styleable>
+    <declare-styleable name="MenuView">
+        <attr name="menu_Must" format="integer" />
+        <attr name="menu_Title" format="string" />
+        <attr name="menu_TitleColor" format="color" />
+        <attr name="menu_TitleSize" format="dimension" />
+        <attr name="menu_Hint" format="string" />
+        <attr name="menu_content" format="string" />
+        <attr name="menu_contentColor" format="color" />
+        <attr name="menu_contentSize" format="dimension" />
+        <attr name="menu_contentMaxLine" format="integer" />
+        <attr name="menu_Icon" format="reference" />
+        <attr name="menu_Pic" format="reference" />
+        <attr name="menu_showPic" format="boolean" />
+        <attr name="menu_showIcon" format="boolean" />
+    </declare-styleable>
+
 </resources>

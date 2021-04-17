@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.BindingMethod;
 import androidx.databinding.BindingMethods;
 
@@ -26,9 +25,9 @@ import com.mylibrary.api.utils.ToastUtil;
  * <p>数字选择按钮
  */
 @BindingMethods({
-        @BindingMethod(type = NumberView.class, attribute = "app:attr_Number", method = "setNumber"),
-        @BindingMethod(type = NumberView.class, attribute = "app:attr_MaxNumber", method = "setMaxNumber"),
-        @BindingMethod(type = NumberView.class, attribute = "app:attr_MinNumber", method = "setMinNumber"),
+        @BindingMethod(type = NumberView.class, attribute = "attr_Number", method = "setNumber"),
+        @BindingMethod(type = NumberView.class, attribute = "attr_MaxNumber", method = "setMaxNumber"),
+        @BindingMethod(type = NumberView.class, attribute = "attr_MinNumber", method = "setMinNumber"),
 })
 public class NumberView extends LinearLayout {
 

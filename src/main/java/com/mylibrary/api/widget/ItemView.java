@@ -24,15 +24,15 @@ import com.mylibrary.api.utils.SystemUtil;
  * @Date: 2020/8/24 8:55
  */
 @BindingMethods({
-        @BindingMethod(type = ItemView.class, attribute = "app:item_leftText", method = "setLeftText"),
-        @BindingMethod(type = ItemView.class, attribute = "app:item_leftHint", method = "setLeftHint"),
-        @BindingMethod(type = ItemView.class, attribute = "app:item_leftTextColor", method = "setLeftTextColor"),
-        @BindingMethod(type = ItemView.class, attribute = "app:item_leftIcon", method = "setLeftIcon"),
+        @BindingMethod(type = ItemView.class, attribute = "item_leftText", method = "setLeftText"),
+        @BindingMethod(type = ItemView.class, attribute = "item_leftHint", method = "setLeftHint"),
+        @BindingMethod(type = ItemView.class, attribute = "item_leftTextColor", method = "setLeftTextColor"),
+        @BindingMethod(type = ItemView.class, attribute = "item_leftIcon", method = "setLeftIcon"),
 
-        @BindingMethod(type = ItemView.class, attribute = "app:item_rightText", method = "setRightText"),
-        @BindingMethod(type = ItemView.class, attribute = "app:item_rightHint", method = "setRightHint"),
-        @BindingMethod(type = ItemView.class, attribute = "app:item_rightTextColor", method = "setRightTextColor"),
-        @BindingMethod(type = ItemView.class, attribute = "app:item_rightIcon", method = "setRightIcon"),
+        @BindingMethod(type = ItemView.class, attribute = "item_rightText", method = "setRightText"),
+        @BindingMethod(type = ItemView.class, attribute = "item_rightHint", method = "setRightHint"),
+        @BindingMethod(type = ItemView.class, attribute = "item_rightTextColor", method = "setRightTextColor"),
+        @BindingMethod(type = ItemView.class, attribute = "item_rightIcon", method = "setRightIcon"),
 })
 public class ItemView extends LinearLayout {
     private TextView leftView;
@@ -407,11 +407,9 @@ public class ItemView extends LinearLayout {
     public TextView getLeftView() {
         return leftView;
     }
-
     public TextView getRightView() {
         return rightView;
     }
-
     public ImageView getRightImgView() {
         return rightImgView;
     }

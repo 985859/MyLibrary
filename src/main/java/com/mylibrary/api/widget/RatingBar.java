@@ -19,8 +19,8 @@ import java.math.BigDecimal;
 
 
 @BindingMethods({
-        @BindingMethod(type = RatingBar.class, attribute = "app:clickable", method = "setClickable"),
-        @BindingMethod(type = RatingBar.class, attribute = "app:starStep", method = "setStar"),
+        @BindingMethod(type = RatingBar.class, attribute = "clickable", method = "setClickable"),
+        @BindingMethod(type = RatingBar.class, attribute = "starStep", method = "setStar"),
 })
 /**
  * Created by hukuai on 2018/2/6.

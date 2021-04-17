@@ -12,14 +12,18 @@ import java.util.List;
  * @Author: hukui
  * @Date: 2020/9/27 10:52
  */
-public abstract class BaseMultiSelcetQuickAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> {
+public abstract class BaseMultiSelectQuickAdapter<T> extends BaseQuickAdapter<T, BaseViewHolder> {
     protected int maxIndex = 9999999;
-    protected boolean iscancel = false;//只有在maxIndex=1  单选有效 默认单选不可取消
+    protected boolean isCancel = false;//只有在maxIndex=1  单选有效 默认单选不可取消
 
     protected List<Integer> selectIds = new ArrayList<>();
 
+    public BaseMultiSelectQuickAdapter(int layoutResId) {
+        super(layoutResId);
+    }
+
     public void setCancel(boolean cancel) {
-        iscancel = cancel;
+        isCancel = cancel;
     }
 
     public void setSelectIndex(int position) {
@@ -28,7 +32,7 @@ public abstract class BaseMultiSelcetQuickAdapter<T> extends BaseQuickAdapter<T,
             if (selectIds.size() > 0)
                 oldID = selectIds.get(0);
             if (oldID == position) {
-                if (iscancel) {
+                if (isCancel) {
                     selectIds.clear();
                     notifyItemChanged(position);
                 } else {
@@ -52,7 +56,7 @@ public abstract class BaseMultiSelcetQuickAdapter<T> extends BaseQuickAdapter<T,
             }
             if (isAdd) {
                 if (selectIds.size() >= maxIndex) {
-                    ToastUtil.showShort( "最多选中" + maxIndex + "项");
+                    ToastUtil.showShort("最多选中" + maxIndex + "项");
                 } else {
                     selectIds.add(position);
                     notifyItemChanged(position);
@@ -67,7 +71,7 @@ public abstract class BaseMultiSelcetQuickAdapter<T> extends BaseQuickAdapter<T,
 
     }
 
-    public void delearID() {
+    public void dealerID() {
         if (selectIds != null && selectIds.size() > 0) {
             for (int i = selectIds.size() - 1; i >= 0; i--) {
                 int index = selectIds.get(i);
@@ -78,22 +82,16 @@ public abstract class BaseMultiSelcetQuickAdapter<T> extends BaseQuickAdapter<T,
     }
 
 
-    public int getSelcedIDSize() {
+    public int getSelectIDSize() {
         return selectIds == null ? 0 : selectIds.size();
     }
 
-    public List<Integer> getSelcedIds() {
+    public List<Integer> getSelectIds() {
         return selectIds == null ? new ArrayList<>() : selectIds;
     }
 
     public void setMaxIndex(int maxIndex) {
         this.maxIndex = maxIndex;
-    }
-
-
-
-    public BaseMultiSelcetQuickAdapter(int layoutResId) {
-        super(layoutResId);
     }
 
 

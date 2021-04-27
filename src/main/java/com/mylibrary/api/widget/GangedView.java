@@ -45,7 +45,7 @@ public class GangedView<T extends IGangedData> extends LinearLayout {
     private List<Integer> selcetPosition = new ArrayList();//选中的索引
     private List<String> selcetID = new ArrayList();//选中的ID
     private List<String> selcetName = new ArrayList();// 选中的 名称
-    private OnSelcetLinsenter selcetLinsenter;
+    private OnSelcetLinsenter selectListener;
 
     public GangedView(Context context) {
         this(context, null);
@@ -185,8 +185,8 @@ public class GangedView<T extends IGangedData> extends LinearLayout {
         addSelcetName(tier, gangedAdapter.getData().get(position).getName());
         if (tier == maxTier) {
             gangedAdapter.setSelectPosition(position);
-            if (selcetLinsenter != null) {
-                selcetLinsenter.onSelcet(selcetID, selcetName);
+            if (selectListener != null) {
+                selectListener.onSelcet(selcetID, selcetName);
             }
             return;
             //达到最大层级 不在执行
@@ -201,8 +201,8 @@ public class GangedView<T extends IGangedData> extends LinearLayout {
             tabLayout.setScrollPosition(tier, 0, true);
         } else {
             gangedAdapter.setSelectPosition(position);
-            if (selcetLinsenter != null) {
-                selcetLinsenter.onSelcet(selcetID, selcetName);
+            if (selectListener != null) {
+                selectListener.onSelcet(selcetID, selcetName);
             }
         }
     }
@@ -336,8 +336,8 @@ public class GangedView<T extends IGangedData> extends LinearLayout {
         gangedAdapter.setSelectTextColor(itmTextSelcetColor);
     }
 
-    public void setOnSelcetLinsenter(OnSelcetLinsenter selcetLinsenter) {
-        this.selcetLinsenter = selcetLinsenter;
+    public void setOnSelectListener(OnSelcetLinsenter selectListener) {
+        this.selectListener = selectListener;
     }
 
     public void setMaxtier(int maxtier) {

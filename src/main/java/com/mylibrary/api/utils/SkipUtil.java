@@ -16,20 +16,20 @@ import java.util.ArrayList;
 
 public class SkipUtil {
 
-    public static Intent getIntent(Context activity, Class classs) {
-        return getIntent(activity, classs, null, null, null);
+    public static Intent getIntent(Context activity, Class toClass) {
+        return getIntent(activity, toClass, null, null, null);
     }
 
-    public static Intent getIntent(Context activity, Class classs, ArrayMap<String, Object> map) {
-        return getIntent(activity, classs, map, null, null);
+    public static Intent getIntent(Context activity, Class toClass, ArrayMap<String, Object> map) {
+        return getIntent(activity, toClass, map, null, null);
     }
 
-    public static Intent getIntent(Context activity, Class classs, ArrayMap<String, Object> map, Bundle bundle) {
-        return getIntent(activity, classs, map, bundle, null);
+    public static Intent getIntent(Context activity, Class toClass, ArrayMap<String, Object> map, Bundle bundle) {
+        return getIntent(activity, toClass, map, bundle, null);
     }
 
-    public static Intent getIntent(Context activity, Class classs, ArrayMap<String, Object> map, Bundle bundle, Intent intent1) {
-        Intent intent = new Intent(activity, classs);
+    public static Intent getIntent(Context activity, Class toClass, ArrayMap<String, Object> map, Bundle bundle, Intent intent1) {
+        Intent intent = new Intent(activity, toClass);
         if (map != null && map.size() > 0) {
             for (int i = 0; i < map.size(); i++) {
                 String key = map.keyAt(i);
@@ -109,53 +109,53 @@ public class SkipUtil {
     }
 
 
-    public static void skipActivity(Context activity, Class classs) {
-        skipActivity(activity, classs, null, null, -1, null, true);
+    public static void skipActivity(Context activity, Class toClass) {
+        skipActivity(activity, toClass, null, null, -1, null, true);
     }
 
-    public static void skipActivity(Context activity, Class classs, int requestCode) {
-        skipActivity(activity, classs, null, null, requestCode, null, true);
+    public static void skipActivity(Context activity, Class toClass, int requestCode) {
+        skipActivity(activity, toClass, null, null, requestCode, null, true);
     }
 
-    public static void skipActivity(Context activity, Class classs, ArrayMap<String, Object> map) {
-        skipActivity(activity, classs, map, null, -1, null, true);
+    public static void skipActivity(Context activity, Class toClass, ArrayMap<String, Object> map) {
+        skipActivity(activity, toClass, map, null, -1, null, true);
     }
 
-    public static void skipActivity(Context activity, Class classs, ArrayMap<String, Object> map, int requestCode) {
-        skipActivity(activity, classs, map, null, requestCode, null, true);
+    public static void skipActivity(Context activity, Class toClass, ArrayMap<String, Object> map, int requestCode) {
+        skipActivity(activity, toClass, map, null, requestCode, null, true);
     }
 
-    public static void skipActivity(Context activity, Class classs, ArrayMap<String, Object> map, boolean isFinish) {
-        skipActivity(activity, classs, map, null, -1, null, isFinish);
+    public static void skipActivity(Context activity, Class toClass, ArrayMap<String, Object> map, boolean isFinish) {
+        skipActivity(activity, toClass, map, null, -1, null, isFinish);
     }
-    public static void skipActivity(Context activity, Class classs, ArrayMap<String, Object> map,int requsetCode, boolean isFinish) {
-        skipActivity(activity, classs, map, null, requsetCode, null, isFinish);
+    public static void skipActivity(Context activity, Class toClass, ArrayMap<String, Object> map,int requsetCode, boolean isFinish) {
+        skipActivity(activity, toClass, map, null, requsetCode, null, isFinish);
     }
-    public static void skipActivity(Context activity, Class classs, Bundle bundle) {
-        skipActivity(activity, classs, null, bundle, -1, null, true);
-    }
-
-    public static void skipActivity(Context activity, Class classs, Bundle bundle, int requestCode) {
-        skipActivity(activity, classs, null, bundle, requestCode, null, true);
+    public static void skipActivity(Context activity, Class toClass, Bundle bundle) {
+        skipActivity(activity, toClass, null, bundle, -1, null, true);
     }
 
-    public static void skipActivity(Context activity, Class classs, Bundle bundle, boolean isFinish) {
-        skipActivity(activity, classs, null, bundle, -1, null, isFinish);
+    public static void skipActivity(Context activity, Class toClass, Bundle bundle, int requestCode) {
+        skipActivity(activity, toClass, null, bundle, requestCode, null, true);
     }
 
-    public static void skipActivity(Context activity, Class classs, Intent intent1) {
-        skipActivity(activity, classs, null, null, -1, intent1, true);
+    public static void skipActivity(Context activity, Class toClass, Bundle bundle, boolean isFinish) {
+        skipActivity(activity, toClass, null, bundle, -1, null, isFinish);
     }
 
-    public static void skipActivity(Context activity, Class classs, ArrayMap<String, Object> map, Bundle bundle, int requestCode) {
-        skipActivity(activity, classs, map, bundle, requestCode, null, true);
+    public static void skipActivity(Context activity, Class toClass, Intent intent1) {
+        skipActivity(activity, toClass, null, null, -1, intent1, true);
     }
 
-    public static void skipActivity(Context activity, Class classs, ArrayMap<String, Object> map, Bundle bundle, int requestCode, Intent intent1, boolean isFinish) {
+    public static void skipActivity(Context activity, Class toClass, ArrayMap<String, Object> map, Bundle bundle, int requestCode) {
+        skipActivity(activity, toClass, map, bundle, requestCode, null, true);
+    }
+
+    public static void skipActivity(Context activity, Class toClass, ArrayMap<String, Object> map, Bundle bundle, int requestCode, Intent intent1, boolean isFinish) {
         if (ActivityManager.getInstance() != null && isFinish) {
-            ActivityManager.getInstance().finishActivity(classs);
+            ActivityManager.getInstance().finishActivity(toClass);
         }
-        Intent intent = getIntent(activity, classs, map, bundle, intent1);
+        Intent intent = getIntent(activity, toClass, map, bundle, intent1);
         if (requestCode != -1) {
             ((Activity) activity).startActivityForResult(intent, requestCode);
         } else {
@@ -164,53 +164,53 @@ public class SkipUtil {
     }
 
 
-    public static void skipActivity(Fragment fragment, Class classs) {
-        skipActivity(fragment, classs, null, null, -1, null, true);
+    public static void skipActivity(Fragment fragment, Class toClass) {
+        skipActivity(fragment, toClass, null, null, -1, null, true);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, int requestCode) {
-        skipActivity(fragment, classs, null, null, requestCode, null, true);
+    public static void skipActivity(Fragment fragment, Class toClass, int requestCode) {
+        skipActivity(fragment, toClass, null, null, requestCode, null, true);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, ArrayMap<String, Object> map) {
-        skipActivity(fragment, classs, map, null, -1, null, true);
+    public static void skipActivity(Fragment fragment, Class toClass, ArrayMap<String, Object> map) {
+        skipActivity(fragment, toClass, map, null, -1, null, true);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, ArrayMap<String, Object> map, int requestCode) {
-        skipActivity(fragment, classs, map, null, requestCode, null, true);
+    public static void skipActivity(Fragment fragment, Class toClass, ArrayMap<String, Object> map, int requestCode) {
+        skipActivity(fragment, toClass, map, null, requestCode, null, true);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, ArrayMap<String, Object> map, boolean isFinish) {
-        skipActivity(fragment, classs, map, null, -1, null, isFinish);
+    public static void skipActivity(Fragment fragment, Class toClass, ArrayMap<String, Object> map, boolean isFinish) {
+        skipActivity(fragment, toClass, map, null, -1, null, isFinish);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, Bundle bundle) {
-        skipActivity(fragment, classs, null, bundle, -1, null, true);
+    public static void skipActivity(Fragment fragment, Class toClass, Bundle bundle) {
+        skipActivity(fragment, toClass, null, bundle, -1, null, true);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, Bundle bundle, int requestCode) {
-        skipActivity(fragment, classs, null, bundle, requestCode, null, true);
+    public static void skipActivity(Fragment fragment, Class toClass, Bundle bundle, int requestCode) {
+        skipActivity(fragment, toClass, null, bundle, requestCode, null, true);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, Bundle bundle, boolean isFinish) {
-        skipActivity(fragment, classs, null, bundle, -1, null, isFinish);
+    public static void skipActivity(Fragment fragment, Class toClass, Bundle bundle, boolean isFinish) {
+        skipActivity(fragment, toClass, null, bundle, -1, null, isFinish);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, Intent intent1) {
-        skipActivity(fragment, classs, null, null, -1, intent1, true);
+    public static void skipActivity(Fragment fragment, Class toClass, Intent intent1) {
+        skipActivity(fragment, toClass, null, null, -1, intent1, true);
     }
 
-    public static void skipActivity(Fragment fragment, Class classs, ArrayMap<String, Object> map, Bundle bundle, int requestCode) {
-        skipActivity(fragment, classs, map, bundle, requestCode, null, true);
+    public static void skipActivity(Fragment fragment, Class toClass, ArrayMap<String, Object> map, Bundle bundle, int requestCode) {
+        skipActivity(fragment, toClass, map, bundle, requestCode, null, true);
     }
-    public static void skipActivity(Fragment fragment, Class classs, ArrayMap<String, Object> map,int requsetCode, boolean isFinish) {
-        skipActivity(fragment, classs, map, null, requsetCode, null, isFinish);
+    public static void skipActivity(Fragment fragment, Class toClass, ArrayMap<String, Object> map,int requsetCode, boolean isFinish) {
+        skipActivity(fragment, toClass, map, null, requsetCode, null, isFinish);
     }
-    public static void skipActivity(Fragment fragment, Class classs, ArrayMap<String, Object> map, Bundle bundle, int requestCode, Intent intent1, boolean isFinish) {
+    public static void skipActivity(Fragment fragment, Class toClass, ArrayMap<String, Object> map, Bundle bundle, int requestCode, Intent intent1, boolean isFinish) {
         if (ActivityManager.getInstance() != null && isFinish) {
-            ActivityManager.getInstance().finishActivity(classs);
+            ActivityManager.getInstance().finishActivity(toClass);
         }
-        Intent intent = getIntent(fragment.getActivity(), classs, map, bundle, intent1);
+        Intent intent = getIntent(fragment.getActivity(), toClass, map, bundle, intent1);
         if (requestCode != -1) {
             fragment.startActivityForResult(intent, requestCode);
         } else {

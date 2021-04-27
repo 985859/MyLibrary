@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -103,10 +104,11 @@ public class EditView extends ViewGroup {
         textMarginTop = array.getDimensionPixelSize(R.styleable.EditView_edit_TextMarginTop, SystemUtil.dp2px(getContext(), 6));
         textPadding = array.getDimensionPixelSize(R.styleable.EditView_edit_Padding, 0);
         array.recycle();
+        binding.viewEditText.setSingleLine(singLine);
         if (inputType != EditorInfo.TYPE_NULL) {
             binding.viewEditText.setInputType(inputType);
         }
-        binding.viewEditText.setSingleLine(singLine);
+
         setTitle(title);
         setTitleColor(titleColor);
         setTitleSize(titleSize);
@@ -314,9 +316,9 @@ public class EditView extends ViewGroup {
             }
             // 当前子空间实际占据的宽度
             int childWidth = child.getMeasuredWidth() + lrMargin;
-
-            if (childWidth > getMeasuredWidth()) {
-                width = getMeasuredWidth() - lrMargin;
+            int w = getMeasuredWidth() - getPaddingStart() - getPaddingEnd();
+            if (childWidth > w) {
+                width = w - lrMargin;
                 child.getLayoutParams().width = width;
             } else {
                 if (width < childWidth) {
@@ -328,6 +330,7 @@ public class EditView extends ViewGroup {
             height += childHeight;
         }
 
+        height += getPaddingTop() + getPaddingBottom();
         //设置最小高度
         if (height < getMinimumHeight()) {
             height = getMinimumHeight();
@@ -337,17 +340,25 @@ public class EditView extends ViewGroup {
         if (maxHeight != -1 && h > maxHeight) {
             h = maxHeight;
         }
-        setMeasuredDimension((modeWidth == MeasureSpec.EXACTLY) ? sizeWidth : width, h);
+        int w = (modeWidth == MeasureSpec.EXACTLY) ? sizeWidth : width;
+        setMeasuredDimension(w, h);
 
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int top = getPaddingTop();
-        view.layout(getPaddingStart(), top, view.getMeasuredWidth(), view.getMeasuredHeight());
-        top = view.getMeasuredHeight();
+        view.layout(getPaddingStart(), top, view.getMeasuredWidth() + getPaddingStart(), view.getMeasuredHeight() + top);
         if (numberView != null) {
-            numberView.layout(getPaddingStart(), top, numberView.getMeasuredWidth(), top + numberView.getMeasuredHeight());
+            int min = getMinimumHeight();
+            if (getMeasuredHeight() <= min) {
+                top = min - numberView.getMeasuredHeight() - getPaddingBottom();
+            } else {
+                top = view.getMeasuredHeight() + top;
+            }
+
+            int bottom = getMeasuredHeight() - getPaddingBottom();
+            numberView.layout(getPaddingStart(), top, numberView.getMeasuredWidth() + getPaddingStart(), bottom);
         }
     }
 
@@ -431,22 +442,22 @@ public class EditView extends ViewGroup {
         }
     }
 
-    @BindingAdapter("app:edit_Title")
+    @BindingAdapter("edit_Title")
     public static void setMenuTitle(EditView view, String title) {
         view.setTitle(title);
     }
 
-    @BindingAdapter("app:edit_Hint")
+    @BindingAdapter("edit_Hint")
     public static void setMenuHint(EditView view, String hint) {
         view.setHint(hint);
     }
 
-    @BindingAdapter("app:edit_Edit")
+    @BindingAdapter("edit_Edit")
     public static void setEdit(EditView view, boolean edit) {
         view.setEdit(edit);
     }
 
-    @BindingAdapter("app:edit_Text")
+    @BindingAdapter("edit_Text")
     public static void setText(EditView editView, String text) {
         if (editView != null) {
             String edTextString = editView.getText() == null ? "" : editView.getText();
@@ -458,7 +469,7 @@ public class EditView extends ViewGroup {
         }
     }
 
-    @InverseBindingAdapter(attribute = "app:edit_Text", event = "textAttrChanged")
+    @InverseBindingAdapter(attribute = "edit_Text", event = "textAttrChanged")
     public static String getValue(EditView view) {
         return view.getText();
     }

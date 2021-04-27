@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.databinding.BindingMethod;
+import androidx.databinding.BindingMethods;
 
 import com.mylibrary.api.R;
 import com.mylibrary.api.interfaces.GradientDrawableInterface;
@@ -26,6 +28,7 @@ public class VariedEditText extends androidx.appcompat.widget.AppCompatEditText 
     private Context context;
     private int drawableLeftWidth;
     private int drawableLeftHeight;
+
 
     private int drawableRightWidth;
     private int drawableRightHeight;

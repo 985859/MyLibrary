@@ -61,6 +61,7 @@ public class MySpinnerView extends LinearLayout {
     private int iconHeight;
     private boolean showFull = true;
     private TextView bottomView;
+    private OnShowCallBack callBack;
 
     public MySpinnerView(Context context) {
         this(context, null);
@@ -207,6 +208,14 @@ public class MySpinnerView extends LinearLayout {
                 return false;   // 这里面拦截不到返回键
             }
         });
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                if (callBack != null) {
+                    callBack.callBack(false);
+                }
+            }
+        });
     }
 
 
@@ -238,6 +247,9 @@ public class MySpinnerView extends LinearLayout {
 
         @Override
         public void showAsDropDown(View anchor, int xoff, int yoff) {
+            if (callBack != null) {
+                callBack.callBack(true);
+            }
             if (Build.VERSION.SDK_INT >= 24) {
                 Rect rect = new Rect();
                 anchor.getGlobalVisibleRect(rect);
@@ -262,6 +274,7 @@ public class MySpinnerView extends LinearLayout {
         }
 
     }
+
     public void reset() {
         selcetIndex = -1;
         setCheck(false);
@@ -329,7 +342,7 @@ public class MySpinnerView extends LinearLayout {
 
     public void setPopWH(int w, int h) {
         if (listView != null) {
-            LayoutParams layoutParams2 = new   LayoutParams(LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LayoutParams layoutParams2 = new LayoutParams(LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams2.height = h;
             layoutParams2.width = w;
             listView.setLayoutParams(layoutParams2);
@@ -373,11 +386,19 @@ public class MySpinnerView extends LinearLayout {
         }
     }
 
+    public void setCallBack(OnShowCallBack callBack) {
+        this.callBack = callBack;
+    }
+
     public <T extends SpinnerData, BH extends BaseViewHolder> BaseQuickAdapter<T, BH> getAdapter() {
         return adapter;
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnShowCallBack {
+        void callBack(boolean show);
     }
 }

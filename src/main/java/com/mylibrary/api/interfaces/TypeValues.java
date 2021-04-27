@@ -5,11 +5,7 @@ package com.mylibrary.api.interfaces;
  * @date: 2019/9/20
  */
 public interface TypeValues {
-    int FINISH = 10001;//结束页面
-    int REFRESH = 10002;//刷新数据;
     int DATA = 10003;//刷新数据;
-    int VIDEO = 10004;//视频;
-    int PIC = 10005;//图片;
     //渐变的方向 只有线性渐变时有效
     int TOP_BOTTOM = 0;
     int TR_BL = 1;
@@ -30,6 +26,5 @@ public interface TypeValues {
     int OVAL = 1;
     int LINE = 2;
     int RING = 3;
-
 
 }

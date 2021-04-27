@@ -296,6 +296,18 @@ public class TopSearchView extends LinearLayout {
 
     }
 
+    public void setRightListener(OnClickListener rightListener) {
+        if (ringhitImgLayout != null) {
+
+            ringhitImgLayout.setOnClickListener(rightListener);
+
+        }
+        if (rightTextView != null) {
+            rightTextView.setOnClickListener(rightListener);
+        }
+
+    }
+
     public void setRightImgViewListener(OnClickListener rightImgViewListener) {
         if (ringhitImgLayout != null) {
             if (rightImgViewListener != null) {
@@ -305,11 +317,11 @@ public class TopSearchView extends LinearLayout {
 
     }
 
-    public void setRightTextListener(OnClickListener rightImgViewListener) {
+    public void setRightTextListener(OnClickListener rightTextListener) {
 
         if (rightTextView != null) {
-            if (rightImgViewListener != null) {
-                rightTextView.setOnClickListener(rightImgViewListener);
+            if (rightTextListener != null) {
+                rightTextView.setOnClickListener(rightTextListener);
             }
         }
     }

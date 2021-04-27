@@ -159,28 +159,29 @@ public class SpannableUtil {
         return builder;
     }
 
-    public static SpannableStringBuilder setEndTip(String tip, String text, int tipTextSize, int textSize, int radius, int color, int tipColor) {
-        if (text == null) {
-            text = "";
-        }
+    public static SpannableStringBuilder setEndTip(String tip, SpannableStringBuilder builder, int tipTextSize, int textSize, int radius, int color, int tipColor) {
         if (tip == null) {
             tip = "";
         }
-        String s = text + " ";
-        SpannableStringBuilder builder = new SpannableStringBuilder(s + tip);
+        int l = 0;
 
+        if (builder == null) {
+            builder = new SpannableStringBuilder();
+        }
+        builder.append("  ");
+        l = builder.length();
+        builder.append(tip);
         //构造文字背景圆角
         RadiusBackgroundSpan span = new RadiusBackgroundSpan(color, tipColor, radius, textSize);
-        builder.setSpan(span, s.length(), s.length() + tip.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.setSpan(span, l, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         //构造文字大小
         AbsoluteSizeSpan spanSize = new AbsoluteSizeSpan(tipTextSize);
-        builder.setSpan(spanSize, s.length(), s.length() + tip.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        //构造文字大小
-        AbsoluteSizeSpan spanSizeLast = new AbsoluteSizeSpan(textSize);
-        builder.setSpan(spanSizeLast, 0, s.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        builder.setSpan(spanSize, l, builder.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
 
         return builder;
     }
+
     /**
      * @param icon   drawable  的ID
      * @param width  单位 dp

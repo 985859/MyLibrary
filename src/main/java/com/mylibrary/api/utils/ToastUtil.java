@@ -19,7 +19,7 @@ public class ToastUtil {
     }
 
     public static void showShort(CharSequence character, int gravity, int x, int y) {
-        ToastUtils.setGravity(gravity, x, y);
+       ToastUtils.setGravity(gravity, x, y);
         ToastUtils.show(character);
     }
 
